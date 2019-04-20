@@ -2,7 +2,7 @@ package com.daniel.cursomc.resources.execepton;
 
 import java.io.Serializable;
 
-public class StanddardError implements Serializable {
+public class StandardError implements Serializable {
 	/**
 	 * 
 	 */
@@ -10,7 +10,7 @@ public class StanddardError implements Serializable {
 	private Integer status;
 	private String msg;
 	private Long TimeStamp;
-	public StanddardError(Integer status, String msg, Long timeStanp) {
+	public StandardError(Integer status, String msg, Long timeStanp) {
 		super();
 		this.status = status;
 		this.msg = msg;
