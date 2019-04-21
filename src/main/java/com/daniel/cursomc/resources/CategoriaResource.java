@@ -1,6 +1,8 @@
 package com.daniel.cursomc.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.daniel.cursomc.domain.Categoria;
+import com.daniel.cursomc.dto.CategoriaDTO;
 import com.daniel.cursomc.services.CategoriaService;
 
 @RestController
@@ -48,4 +51,10 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<CategoriaDTO>> buscarTodasCategorias() {
+		List<Categoria> lista  = service.buscarTodasCategorias();
+		List<CategoriaDTO> listaDto = lista.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listaDto);
+	}
 }
