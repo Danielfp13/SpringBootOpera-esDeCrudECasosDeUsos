@@ -2,21 +2,34 @@ package com.daniel.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.daniel.cursomc.services.validation.ClienteInsert;
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Integer id;
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Length(min=5,max=80,message="o Tamaho deve ser entre 5 e 80 caracteres")
 	private String nome;
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Email(message="Email inválido")
 	private String email;
+	
 	private String cpfOuCnpj;
 	private Integer tipo;
-
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String logadouro;
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String numero;
 	private String complemento;
 	private String bairro;
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String cep;
-
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
@@ -27,13 +40,6 @@ public class ClienteNewDTO implements Serializable {
 
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
